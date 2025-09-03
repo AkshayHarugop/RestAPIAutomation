@@ -42,7 +42,7 @@ public class Basics2 {
 		
 		JsonPath jp = new JsonPath(response);
 		String PlaceId = jp.getString("place_id");
-		String newAdd = "Bangalore";
+		String newAdd = "70 winter walk, USA";
 		
 		System.out.println(PlaceId);
 		
@@ -65,7 +65,7 @@ public class Basics2 {
         then - Validate the response*/
 		given().log().all().queryParam("key", "qaclick123").queryParam("place_id", PlaceId).body("{\r\n"
 				+ "\"place_id\":\""+PlaceId+"\",\r\n"
-				+ "\"address\":\"70 winter walk, USA\",\r\n"
+				+ "\"address\":\""+newAdd+"\",\r\n"
 				+ "\"key\":\"qaclick123\"\r\n"
 				+ "}")
 		.when().put("/maps/api/place/update/json")
