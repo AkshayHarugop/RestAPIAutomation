@@ -30,6 +30,7 @@ public class Basics {
 				+ "}")
 		.when().post("/maps/api/place/add/json")
 		.then().log().all().assertThat().statusCode(200);
+//		.log().all() we can utilize it in everywhere that is given(), when() and then() methods ...
 		
 	}
 
