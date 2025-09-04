@@ -104,7 +104,7 @@ public class Basics2 {
 		/*Validate if Get place API is working as expected 
         will use methods like given, when and there
         given - all input details (query parameter, header) , Body
-        when -  submit the API CRUD action (resource and http method goes under when)
+        when -  submit the API CRUD action (resource and http method goes under when) 
         then - Validate the response*/
 		given().log().all().queryParam("key", "qaclick123").queryParam("place_id", PlaceId)
 		.when().get("/maps/api/place/get/json")
