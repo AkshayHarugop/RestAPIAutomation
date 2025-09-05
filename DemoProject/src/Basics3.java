@@ -4,6 +4,7 @@ import static org.hamcrest.Matchers.equalTo;
 import org.testng.Assert;
 
 import files.payload;
+import files.reusableMethods;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 
@@ -23,7 +24,8 @@ public class Basics3 {
 		.then().log().all().assertThat().statusCode(200)
 		.body("scope", equalTo("APP")).header("Server", "Apache/2.4.52 (Ubuntu)")
 		.extract().response().asString();
-		JsonPath jp = new JsonPath(response);
+//		JsonPath jp = new JsonPath(response); // Updated with reusable code
+		JsonPath jp = reusableMethods.rawToJson(response);
 		String PlaceID = jp.getString("place_id");
 		String newAddress = "70 winter walk, USA";
 		
@@ -36,7 +38,8 @@ public class Basics3 {
 		String getPlaceResponse = given().log().all().queryParam("key", "qaclick123").queryParam("place_id", PlaceID)
 		.when().get("maps/api/place/get/json")
 		.then().log().all().assertThat().statusCode(200).body("address", equalTo(newAddress)).extract().response().asString();
-		JsonPath jp1 = new JsonPath(getPlaceResponse);
+//		JsonPath jp1 = new JsonPath(getPlaceResponse); // Updated with reusable code
+		JsonPath jp1 = reusableMethods.rawToJson(getPlaceResponse);
 		String Address = jp1.getString("address");
 		Assert.assertEquals(Address, newAddress);
 		
