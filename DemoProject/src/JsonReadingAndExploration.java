@@ -35,6 +35,7 @@ public class JsonReadingAndExploration {
 			String courseName = jp.getString("courses[" + i + "].title");
 			if (courseName.equals("RPA")) {
 				System.out.println("Course of the RPA price is = " + jp.getString("courses[" + i + "].price"));
+				break;
 			}
 		}
 		System.out.println("------------------------------------");
