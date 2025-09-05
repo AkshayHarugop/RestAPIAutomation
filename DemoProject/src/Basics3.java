@@ -44,7 +44,6 @@ public class Basics3 {
 		Assert.assertEquals(Address, newAddress);
 		
 		System.out.println("Done!!");
-
 		
 	}
 
