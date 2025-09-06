@@ -1,6 +1,7 @@
 import static io.restassured.RestAssured.given;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -10,11 +11,16 @@ import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 
 public class DynamicJson {
+	String id;
+	
+	@BeforeClass
+    public void setup() {
+        RestAssured.baseURI = "http://216.10.245.166"; // set once for all tests
+    }
 
 	@Test(dataProvider = "BooksData")
 	public void addBook(String isbn, String aisle) {
-		RestAssured.baseURI = "http://216.10.245.166";
-		String addBookResponse = given().log().all().header("Content-Type", "application/json").body(payload.addBookApiJson(isbn, aisle))
+		String addBookResponse = given().log().all().header("Content-Type", "application/json").body(payload.addBookApiJson(isbn, aisle, "Test@123"))
 		.when().post("/Library/Addbook.php")
 		.then().log().all().assertThat().statusCode(200).extract().response().asString();
 		
@@ -23,6 +29,14 @@ public class DynamicJson {
 		String id = jp1.getString("ID");
 		Assert.assertEquals("successfully added", msg);
 
+	}
+	
+	@Test
+	public void getBookWithAuthorName() {
+		given().log().all().queryParam("AuthorName", "Test@123")
+		.when().get("/Library/GetBook.php")
+		.then().log().all().assertThat().statusCode(200);
+		
 	}
 
 	@DataProvider(name = "BooksData")

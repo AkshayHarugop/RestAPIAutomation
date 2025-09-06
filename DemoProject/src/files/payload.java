@@ -28,8 +28,8 @@ public class payload {
 				+ "\r\n" + "\"copies\": 10\r\n" + "\r\n" + "}\r\n" + "\r\n" + "]\r\n" + "\r\n" + "}";
 	}
 
-	public static String addBookApiJson(String isbn, String aisle) {
+	public static String addBookApiJson(String isbn, String aisle, String author) {
 		return "{\r\n" + "\r\n" + "\"name\":\"Learn Appium Automation with Java\",\r\n" + "\"isbn\":\""+isbn+"\",\r\n"
-				+ "\"aisle\":\""+aisle+"\",\r\n" + "\"author\":\"Test@123\"\r\n" + "}\r\n" + "";
+				+ "\"aisle\":\""+aisle+"\",\r\n" + "\"author\":\""+author+"\"\r\n" + "}\r\n" + "";
 	}
 }
