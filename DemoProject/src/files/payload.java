@@ -32,4 +32,12 @@ public class payload {
 		return "{\r\n" + "\r\n" + "\"name\":\"Learn Appium Automation with Java\",\r\n" + "\"isbn\":\""+isbn+"\",\r\n"
 				+ "\"aisle\":\""+aisle+"\",\r\n" + "\"author\":\""+author+"\"\r\n" + "}\r\n" + "";
 	}
+	
+	public static String deleteBookApiJson(String ID) {
+		return "{\r\n"
+				+ " \r\n"
+				+ "\"ID\" : \""+ID+"\"\r\n"
+				+ " \r\n"
+				+ "}";
+	}
 }

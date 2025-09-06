@@ -1,6 +1,8 @@
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.*;
 
+import java.util.UUID;
+
 public class Basics {
 
 	public static void main(String[] args) {
@@ -32,6 +34,8 @@ public class Basics {
 		.then().log().all().assertThat().statusCode(200);
 //		.log().all() we can utilize it in everywhere that is given(), when() and then() methods ...
 		
+		
+		System.out.println(UUID.randomUUID().toString().substring(1, 5));
 	}
 
 }
