@@ -14,16 +14,17 @@ import io.restassured.path.json.JsonPath;
 
 public class DynamicJson {
 	String id;
+	int[][] matrix;
 
 	@BeforeClass
 	public void setup() {
 		RestAssured.baseURI = "http://216.10.245.166"; // set once for all tests
 	}
 
-	@Test(dataProvider = "BooksData")
+	@Test(priority = 1, dataProvider = "BooksData")
 	public void addBook(String isbn, String aisle) {
 		String addBookResponse = given().log().all().header("Content-Type", "application/json")
-				.body(payload.addBookApiJson(isbn, aisle, "Test@123")).when().post("/Library/Addbook.php").then().log()
+				.body(payload.addBookApiJson(isbn, aisle, "Test1234")).when().post("/Library/Addbook.php").then().log()
 				.all().assertThat().statusCode(200).extract().response().asString();
 
 		JsonPath jp1 = reusableMethods.rawToJson(addBookResponse);
@@ -33,20 +34,21 @@ public class DynamicJson {
 
 	}
 
-	@Test
+	@Test(priority = 2)
 	public void getBookWithAuthorName() {
-		given().log().all().queryParam("AuthorName", "Test@123").when().get("/Library/GetBook.php").then().log().all()
+		given().log().all().queryParam("AuthorName", "Test1234").when().get("/Library/GetBook.php").then().log().all()
 				.assertThat().statusCode(200);
 
 	}
 
-	@Test(dataProvider = "BooksData")
+	@Test(priority = 3, dataProvider = "BooksData")
 	public void GetBookWithID(String isbn, String aisle) {
+		System.out.println(isbn + aisle);
 		given().log().all().queryParam("ID", isbn + aisle).when().get("Library/GetBook.php").then().log().all()
 				.assertThat().statusCode(200);
 	}
 
-	@Test
+	@Test(priority = 4, dependsOnMethods = {"GetBookWithID"})
 	public void DeleteBookByID(String isbn, String aisle) {
 		given().log().all().header("Content-Type", "application/json").body(payload.deleteBookApiJson(isbn + aisle))
 				.when().post("Library/DeleteBook.php").then().log().all().assertThat().statusCode(200);
@@ -55,11 +57,11 @@ public class DynamicJson {
 
 	@DataProvider(name = "BooksData")
 	public Object[][] getData() {
-		return new Object[][] { { "abc", UUID.randomUUID().toString().substring(1, 5) },
-				{ "def", UUID.randomUUID().toString().substring(1, 5) },
-				{ "ghi", UUID.randomUUID().toString().substring(1, 5) },
-				{ "jkl", UUID.randomUUID().toString().substring(1, 5) },
-				{ "mno", UUID.randomUUID().toString().substring(1, 5) } };
+		return new Object[][] { { "abc", "123" },
+				{ "def", "456" },
+				{ "ghi", "789" },
+				{ "jkl", "123" },
+				{ "mno", "456" } };
 	}
 
 }
