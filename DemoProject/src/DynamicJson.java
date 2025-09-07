@@ -63,7 +63,5 @@ public class DynamicJson {
 				{ "jkl", "123" },
 				{ "mno", "456" } };
 	}
-	
-	
 
 }
