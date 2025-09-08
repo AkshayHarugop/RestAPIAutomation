@@ -1,11 +1,16 @@
 import static io.restassured.RestAssured.given;
+
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import files.payload;
+import files.reusableMethods;
 import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
 
 public class Jira {
+	
+	String ID;
 	
 	@BeforeTest
 	public void setup() {
@@ -18,6 +23,13 @@ public class Jira {
 		.body(payload.jiraCreateDefect())
 		.when().post("/rest/api/2/issue")
 		.then().log().all().assertThat().statusCode(201).extract().response().asString();
+		JsonPath jp1 = reusableMethods.rawToJson(createBugResponse);
+		ID = jp1.getString(id);
+	}
+	
+	@Test
+	public void deleteBug() {
+		
 	}
 	
 	
