@@ -1,7 +1,5 @@
 import static io.restassured.RestAssured.given;
 
-import java.util.UUID;
-
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
