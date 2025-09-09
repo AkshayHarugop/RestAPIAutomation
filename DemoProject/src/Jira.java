@@ -24,11 +24,12 @@ public class Jira {
 		.when().post("/rest/api/2/issue")
 		.then().log().all().assertThat().statusCode(201).extract().response().asString();
 		JsonPath jp1 = reusableMethods.rawToJson(createBugResponse);
-		ID = jp1.getString(id);
+		ID = jp1.getString("id");
 	}
 	
 	@Test
 	public void deleteBug() {
+		System.out.println(ID);
 		
 	}
 	
