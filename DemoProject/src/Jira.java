@@ -17,7 +17,7 @@ public class Jira {
 		RestAssured.baseURI= "https://akshayharugop.atlassian.net";
 	}
 	
-	@Test
+	@Test(priority = 1)
 	public void createBug() {
 		String createBugResponse = given().log().all().header("Accept","application/json").header("Content-Type","application/json").header("Authorization","Basic YWtzaGF5aGFydWdvcEBnbWFpbC5jb206QVRBVFQzeEZmR0YwS093V3Jlc3g4bmRaSGxGYnNqQkZpczhEUUJDZVlKbk1aR1E0eXJlYXZ2VEZJUHUxRC1jOHpZLUFBek84dm5iNG5XWXhqdTF3dUlmRkxIdU9oU1M4WUJCWTlQWWxTMHk5ODR4NlFzTzhIN0kzZnp5WnNVWlF6VkhDeDlURHoyNUFaQllSOFBVel8yZ2owcFpZS083TWNiRGNCbHg5cktsZzF2enlPakN1dXdzPTJCODUyQUFD")
 		.body(payload.jiraCreateDefect())
@@ -27,9 +27,12 @@ public class Jira {
 		ID = jp1.getString("id");
 	}
 	
-	@Test
+	@Test(priority = 2)
 	public void deleteBug() {
 		System.out.println(ID);
+		given().log().all().header("Accept","application/json").header("Content-Type","application/json").header("Authorization","Basic YWtzaGF5aGFydWdvcEBnbWFpbC5jb206QVRBVFQzeEZmR0YwS093V3Jlc3g4bmRaSGxGYnNqQkZpczhEUUJDZVlKbk1aR1E0eXJlYXZ2VEZJUHUxRC1jOHpZLUFBek84dm5iNG5XWXhqdTF3dUlmRkxIdU9oU1M4WUJCWTlQWWxTMHk5ODR4NlFzTzhIN0kzZnp5WnNVWlF6VkhDeDlURHoyNUFaQllSOFBVel8yZ2owcFpZS083TWNiRGNCbHg5cktsZzF2enlPakN1dXdzPTJCODUyQUFD")
+		.when().delete("rest/api/2/issue/"+ID+"")
+		.then().log().all().assertThat().statusCode(204);
 		
 	}
 	
