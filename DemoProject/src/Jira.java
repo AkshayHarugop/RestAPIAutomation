@@ -28,6 +28,13 @@ public class Jira {
 	}
 	
 	@Test(priority = 2)
+	public void addAttachementToBug() {
+		given().log().all().header("Authorization","Basic YWtzaGF5aGFydWdvcEBnbWFpbC5jb206QVRBVFQzeEZmR0YwS093V3Jlc3g4bmRaSGxGYnNqQkZpczhEUUJDZVlKbk1aR1E0eXJlYXZ2VEZJUHUxRC1jOHpZLUFBek84dm5iNG5XWXhqdTF3dUlmRkxIdU9oU1M4WUJCWTlQWWxTMHk5ODR4NlFzTzhIN0kzZnp5WnNVWlF6VkhDeDlURHoyNUFaQllSOFBVel8yZ2owcFpZS083TWNiRGNCbHg5cktsZzF2enlPakN1dXdzPTJCODUyQUFD")
+		.when().delete("/rest/api/2/issue/"+ID+"/attachments")
+		.then().log().all().assertThat().statusCode(200);
+	}
+	
+	@Test(priority = 3)
 	public void deleteBug() {
 		System.out.println(ID);
 		given().log().all().header("Accept","application/json").header("Content-Type","application/json").header("Authorization","Basic YWtzaGF5aGFydWdvcEBnbWFpbC5jb206QVRBVFQzeEZmR0YwS093V3Jlc3g4bmRaSGxGYnNqQkZpczhEUUJDZVlKbk1aR1E0eXJlYXZ2VEZJUHUxRC1jOHpZLUFBek84dm5iNG5XWXhqdTF3dUlmRkxIdU9oU1M4WUJCWTlQWWxTMHk5ODR4NlFzTzhIN0kzZnp5WnNVWlF6VkhDeDlURHoyNUFaQllSOFBVel8yZ2owcFpZS083TWNiRGNCbHg5cktsZzF2enlPakN1dXdzPTJCODUyQUFD")
