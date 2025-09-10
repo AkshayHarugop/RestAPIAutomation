@@ -1,7 +1,8 @@
-import io.restassured.RestAssured;
-import static io.restassured.RestAssured.*;
+import static io.restassured.RestAssured.given;
 
 import java.util.UUID;
+
+import io.restassured.RestAssured;
 
 public class Basics {
 
