@@ -1,19 +1,14 @@
 package pojo;
 
 public class GetCourse {
-	private String instructor;
+
 	private String url;
 	private String services;
 	private String expertise;
-	private courses courses;
+	private	Courses Courses;
+	private String instructor;
 	private String linkedIn;
 	
-	public String getInstructor() {
-		return instructor;
-	}
-	public void setInstructor(String instructor) {
-		this.instructor = instructor;
-	}
 	public String getUrl() {
 		return url;
 	}
@@ -32,11 +27,17 @@ public class GetCourse {
 	public void setExpertise(String expertise) {
 		this.expertise = expertise;
 	}
-	public pojo.courses getCourses() {
-		return courses;
+	public pojo.Courses getCourses() {
+		return Courses;
 	}
-	public void setCourses(pojo.courses courses) {
-		this.courses = courses;
+	public void setCourses(pojo.Courses courses) {
+		Courses = courses;
+	}
+	public String getInstructor() {
+		return instructor;
+	}
+	public void setInstructor(String instructor) {
+		this.instructor = instructor;
 	}
 	public String getLinkedIn() {
 		return linkedIn;
@@ -44,5 +45,5 @@ public class GetCourse {
 	public void setLinkedIn(String linkedIn) {
 		this.linkedIn = linkedIn;
 	}
-
+	
 }

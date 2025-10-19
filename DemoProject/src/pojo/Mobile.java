@@ -1,10 +1,9 @@
 package pojo;
 
-public class mobile {
-	
+public class Mobile {
+
 	private String courseTitle;
 	private String price;
-	
 	public String getCourseTitle() {
 		return courseTitle;
 	}
@@ -17,6 +16,8 @@ public class mobile {
 	public void setPrice(String price) {
 		this.price = price;
 	}
-	
 
+	
+	
+	
 }

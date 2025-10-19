@@ -1,10 +1,9 @@
 package pojo;
 
-public class webAutomation {
-	
+public class Api {
+
 	private String courseTitle;
 	private String price;
-	
 	public String getCourseTitle() {
 		return courseTitle;
 	}
@@ -17,6 +16,8 @@ public class webAutomation {
 	public void setPrice(String price) {
 		this.price = price;
 	}
-	
 
+	
+	
+	
 }

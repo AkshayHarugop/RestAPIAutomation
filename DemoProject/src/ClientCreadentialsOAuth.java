@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import files.reusableMethods;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
+import pojo.GetCourse;
 
 public class ClientCreadentialsOAuth {
 
@@ -35,9 +36,11 @@ public class ClientCreadentialsOAuth {
 	
 	@Test(priority = 2)
 	public void GetCourseDetails() {
-		given().log().all().queryParam("access_token", accessToken)
-		.when().get("/oauthapi/getCourseDetails")
-		.then().log().all().assertThat().statusCode(401);
+		GetCourse gc = given().log().all().queryParam("access_token", accessToken)
+		.when().get("/oauthapi/getCourseDetails").as(GetCourse.class);
+//		.then().log().all().assertThat().statusCode(401);
+		
+		System.out.println(gc.getInstructor());
 	}
 	
 }
