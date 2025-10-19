@@ -29,13 +29,13 @@ public class ClientCreadentialsOAuth {
 		.then().log().all().assertThat().statusCode(200).extract().response().asString();
 		
 		JsonPath jp1 = reusableMethods.rawToJson(TokenResponse);
-		accessToken = jp1.getString("access_token");
+		this.accessToken = jp1.getString("access_token");
 		System.out.println(accessToken);
 	}
 	
 	@Test(priority = 2)
 	public void GetCourseDetails() {
-		given().log().all().param("access_token", accessToken)
+		given().log().all().queryParam("access_token", accessToken)
 		.when().get("/oauthapi/getCourseDetails")
 		.then().log().all().assertThat().statusCode(401);
 	}
