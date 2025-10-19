@@ -35,7 +35,9 @@ public class ClientCreadentialsOAuth {
 	
 	@Test(priority = 2)
 	public void GetCourseDetails() {
-		
+		given().log().all().param("access_token", accessToken)
+		.when().get("/oauthapi/getCourseDetails")
+		.then().log().all().assertThat().statusCode(401);
 	}
 	
 }
