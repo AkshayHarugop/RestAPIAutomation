@@ -41,6 +41,18 @@ public class ClientCreadentialsOAuth {
 //		.then().log().all().assertThat().statusCode(401);
 		
 		System.out.println(gc.getInstructor());
+		System.out.println(gc.getLinkedIn());
+//		System.out.println(gc.getCourses().getApi().size());
+//		System.out.println(gc.getCourses().getApi().get(1).getCourseTitle().equals("SoapUI Webservices testing"));
+		
+		
+		for(int i=0;i<gc.getCourses().getApi().size();i++) {
+			if(gc.getCourses().getApi().get(i).getCourseTitle().equals("SoapUI Webservices testing")) {
+				System.out.println(gc.getCourses().getApi().get(i).getPrice());
+			}
+		}
+		
+//		System.out.println(gc.getCourses().getApi().get(0).getCourseTitle());
 	}
 	
 }
