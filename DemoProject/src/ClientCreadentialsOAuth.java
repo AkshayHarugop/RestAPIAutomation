@@ -1,6 +1,7 @@
 import static io.restassured.RestAssured.given;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -9,6 +10,7 @@ import files.reusableMethods;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import pojo.GetCourse;
+import pojo.WebAutomation;
 
 public class ClientCreadentialsOAuth {
 
@@ -53,6 +55,17 @@ public class ClientCreadentialsOAuth {
 		}
 		
 //		System.out.println(gc.getCourses().getApi().get(0).getCourseTitle());
+		
+//		Get the details of the course names of the webAutomation
+		
+		List<WebAutomation> webAutomation = gc.getCourses().getWebAutomation();
+//		System.out.println(webAutomation.get(0).getCourseTitle());
+//		System.out.println(webAutomation.size());
+		System.out.println("Below are the course details of the courses belongs to webAutomation : ");
+		for(int i=0;i<webAutomation.size();i++) {
+			System.out.println(webAutomation.get(i).getCourseTitle());
+		}
+		
 	}
 	
 }
