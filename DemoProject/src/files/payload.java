@@ -29,31 +29,34 @@ public class payload {
 	}
 
 	public static String addBookApiJson(String isbn, String aisle, String author) {
-		return "{\r\n" + "\r\n" + "\"name\":\"Learn Appium Automation with Java\",\r\n" + "\"isbn\":\""+isbn+"\",\r\n"
-				+ "\"aisle\":\""+aisle+"\",\r\n" + "\"author\":\""+author+"\"\r\n" + "}\r\n" + "";
+		return "{\r\n" + "\r\n" + "\"name\":\"Learn Appium Automation with Java\",\r\n" + "\"isbn\":\"" + isbn
+				+ "\",\r\n" + "\"aisle\":\"" + aisle + "\",\r\n" + "\"author\":\"" + author + "\"\r\n" + "}\r\n" + "";
 	}
-	
+
 	public static String deleteBookApiJson(String ID) {
-		return "{\r\n"
-				+ " \r\n"
-				+ "\"ID\" : \""+ID+"\"\r\n"
-				+ " \r\n"
-				+ "}";
+		return "{\r\n" + " \r\n" + "\"ID\" : \"" + ID + "\"\r\n" + " \r\n" + "}";
+	}
+
+	public static String jiraCreateDefect() {
+		return "{\r\n" + "    \"fields\": {\r\n" + "       \"project\":\r\n" + "       {\r\n"
+				+ "          \"key\": \"SCRUM\"\r\n" + "       },\r\n" + "       \"summary\": \"Test Defect\",\r\n"
+				+ "       \"description\": \"Creating of an issue using project keys and issue type names using the REST API\",\r\n"
+				+ "       \"issuetype\": {\r\n" + "          \"name\": \"Bug\"\r\n" + "       }\r\n" + "   }\r\n" + "}";
+	}
+
+	public static String e2Elogin() {
+		return "{\r\n" + "    \"userEmail\": \"akshayharugop@gmail.com\",\r\n"
+				+ "    \"userPassword\": \"Test@123\"\r\n" + "}   ";
 	}
 	
-	public static String jiraCreateDefect() {
+	public static String e2EcreateOrder(String productOrderedId) {
 		return "{\r\n"
-				+ "    \"fields\": {\r\n"
-				+ "       \"project\":\r\n"
-				+ "       {\r\n"
-				+ "          \"key\": \"SCRUM\"\r\n"
-				+ "       },\r\n"
-				+ "       \"summary\": \"Test Defect\",\r\n"
-				+ "       \"description\": \"Creating of an issue using project keys and issue type names using the REST API\",\r\n"
-				+ "       \"issuetype\": {\r\n"
-				+ "          \"name\": \"Bug\"\r\n"
-				+ "       }\r\n"
-				+ "   }\r\n"
+				+ "    \"orders\": [\r\n"
+				+ "        {\r\n"
+				+ "            \"country\": \"India\",\r\n"
+				+ "            \"productOrderedId\": \""+productOrderedId+"\"\r\n"
+				+ "        }\r\n"
+				+ "    ]\r\n"
 				+ "}";
 	}
 }
